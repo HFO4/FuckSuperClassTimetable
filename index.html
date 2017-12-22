@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN" itemscope itemtype="http://schema.org/WebPage">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CQU课表导出</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+<div lcass="col-6">
+<br>
+<div class="card">
+  <div class="card-header">
+    CQU课表导出
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">"Make the calendar great again"</h4>
+    <form action="https://cqu.aoaoao.me/getList" method="post" id="f">
+  <div class="form-group">
+    <label for="exampleInputEmail1">教务网用户名</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="uid" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted">一般为学号</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">教务网密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">导出</button>&nbsp;&nbsp;(请不要在QQ或微信的内置浏览器中打开) <br><br><button onclick="sub()"  class="btn btn-primary" type="button">一键导入Google Calendar</button>&nbsp;&nbsp;(请确保可以访问Google)
+</form>
+  </div>
+</div>
+<br>
+<div class="card">
+  <div class="card-header">
+    说明
+  </div>
+  <div class="card-body">
+  <p>本工具可以将重庆大学的课程表导出为ics格式，以便导入日历应用，不用再忍受“看一秒课表，先看五秒广告”的某超级和某格子。</p>
+   <p>由于第二学期的数据教务网还没公开，所以现在导出的都是第一学期的。作息时间表是虎溪校区的，如果老校区用的人多了的话会增加老校区的时间表选项.
+  </p>
+   Bug反馈QQ:912394456&nbsp;&nbsp;
+   E-Mail:<a href="mailto:abslant@126.com">abslant@126.com</a>
+  </div>
+</div>
+<br>
+<div class="card">
+  <div class="card-header">
+    使用指南
+  </div>
+  <div class="card-body">
+  <p>你可以任选一种方式导入课表</p>
+   <p><strong>方式一：使用系统自带日历程序</strong>&nbsp;导出ics文件后在手机上打开，选择打开方式为“日历”，按照提示导入。注意：不是所有品牌手机都支持，目前已知的可以导入的有华为、OPPO。
+  </p>
+     <p><strong>方式二：使用Google日历</strong>&nbsp;此方法适用于爱折腾的同学。下载Google日历APP，绑定自己的Google账号(你可能需要谷歌三件套和科学上网的姿势)；然后用电脑登陆Google日历网页版，点击右上角的齿轮图标转到设置页面，再点击右侧的“导入和导出”，选择你在此处获取的ics文件导入；最后打开Google日历手机APP，开启同步即可。
+  </p>
+   <p><strong>方式三：IOS系统推荐使用</strong>&nbsp;使用Safari浏览器打开本页，点击导出按钮后系统日历会提示导入，按照说明操作即可。
+  </p>
+
+  </div>
+</div>
+<br>
+<div class="card">
+  <div class="card-header">
+    手动导出
+  </div>
+  <div class="card-body">
+    <p class="card-title">理论支持所有使用青果教务系统的学校。请在教务网查询个人课表，并通过F12等方式获取课表Html代码，复制到下方。</p>
+    <form action="https://cqu.aoaoao.me/getListBySource" method="post" id="h">
+  <div class="form-group">
+    <textarea class="form-control" rows="6" placeholder="请再次输入课表HTML代码" name="content"></textarea>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">导出</button> &nbsp;&nbsp;(请不要在QQ或微信的内置浏览器中打开)<br><br><button onclick="sub_t()"  class="btn btn-primary" type="button">一键导入Google Calendar</button>&nbsp;&nbsp;(请确保可以访问Google)
+</form>
+  </div>
+</div><br>
+</div>
+</div>
+<div align="center">
+<img src="logo.png" style="width: 80px;">
+<br>
+Made with <li class="fa fa-heart" style="color: #f44336"></li> By Aaron
+<br><br>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<div style="display: none">
+<script src="https://s13.cnzz.com/z_stat.php?id=5807235&web_id=5807235" language="JavaScript"></script>
+<script type="text/javascript">
+function sub(){
+$("#f").attr("action","https://cqu.aoaoao.me/getJson");
+$("#f").submit();
+  return false;}
+function sub_t(){
+$("#h").attr("action","https://cqu.aoaoao.me/getJsonBySource");
+$("#h").submit();
+  return false;}
+</script>
+</div>
